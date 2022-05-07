@@ -72,7 +72,7 @@ public class IntList {
         return new IntList(L.first * L.first, squareListRecursive(L.rest));
     }
 
-    /** DO NOT MODIFY ANYTHING ABOVE THIS LINE! */
+    /** DO NOT MODIFY ANYTHING ABOVE THIS LINE!  */
 
 
     /**
@@ -82,7 +82,35 @@ public class IntList {
 
     public static IntList dcatenate(IntList A, IntList B) {
         //TODO:  fill in method
-        return null;
+        if (A == null && B == null) {
+            return null;
+        }
+        if (A == null) {
+            return B;
+        }
+        IntList P = A;
+        while (A.rest != null) {
+            A = A.rest;
+        }
+        A.rest = B;
+        return P;
+    }
+    /** recursive **/
+    public static IntList dcatenate2(IntList A, IntList B) {
+        //TODO:  fill in method
+        if (A == null && B == null) {
+            return null;
+        }
+        if (A == null) {
+            return B;
+        }
+        if (A.rest != null) {
+            A.rest = dcatenate2(A.rest, B);
+            return A;
+        } else {
+            A.rest = B;
+            return A;
+        }
     }
 
     /**
@@ -91,7 +119,37 @@ public class IntList {
      */
     public static IntList catenate(IntList A, IntList B) {
         //TODO:  fill in method
-        return null;
+        if (A == null && B == null) {
+            return null;
+        }
+        if (A == null) {
+            return B;
+        }
+        IntList T = new IntList();
+        IntList P = T;
+        while (A.rest != null) {
+            T.first = A.first;
+            T.rest = new IntList();
+            T = T.rest;
+            A = A.rest;
+        }
+        T.first = A.first;
+        T.rest = B;
+        return  P;
+    }
+    /** recursive **/
+    public static IntList catenate2(IntList A, IntList B) {
+        //TODO:  fill in method
+        if (A == null && B == null) {
+            return null;
+        }
+        if (A == null) {
+            return B;
+        }
+        if (A.rest != null) {
+            return new IntList(A.first, catenate2(A.rest, B));
+        }
+        return  new IntList(A.first, B);
     }
 
 
