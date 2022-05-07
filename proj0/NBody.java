@@ -11,8 +11,10 @@ public class NBody {
         In in = new In(path);
         in.readInt();
         in.readDouble();
-        for (int i = 0; i < 5; i++) {
+        int i = 0;
+        while (!in.isEmpty()) {
             Ps[i] = new Planet(in.readDouble(), in.readDouble(), in.readDouble(), in.readDouble(), in.readDouble(), in.readString());
+            i++;
         }
         return Ps;
     }
