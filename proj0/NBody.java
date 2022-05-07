@@ -7,13 +7,14 @@ public class NBody {
     }
 
     public static Planet[] readPlanets(String path) {
-        Planet[] Ps = new Planet[5];
-        In in = new In(path);
-        in.readInt();
-        in.readDouble();
+        In in1 = new In(path);
+        Planet[] Ps = new Planet[in1.readAllLines().length - 2];
+        In in2 = new In(path);
+        in2.readInt();
+        in2.readDouble();
         int i = 0;
-        while (!in.isEmpty()) {
-            Ps[i] = new Planet(in.readDouble(), in.readDouble(), in.readDouble(), in.readDouble(), in.readDouble(), in.readString());
+        while (!in2.isEmpty()) {
+            Ps[i] = new Planet(in2.readDouble(), in2.readDouble(), in2.readDouble(), in2.readDouble(), in2.readDouble(), in2.readString());
             i++;
         }
         return Ps;
