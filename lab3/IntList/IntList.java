@@ -149,8 +149,44 @@ public class IntList {
         if (A.rest != null) {
             return new IntList(A.first, catenate2(A.rest, B));
         }
-        return  new IntList(A.first, B);
+        return new IntList(A.first, B);
     }
+
+    /** reverse the order of the elements in the array
+
+     /*  without change the origin  */
+
+    public static IntList reverse1(IntList L) {
+        if (L == null) {
+            return null;
+        }
+        IntList T = null;
+        while (L != null) {
+            T = new IntList(L.first, T);
+            L = L.rest;
+        }
+        return  T;
+    }
+
+    /*  change the origin iteratively */
+    public static IntList reverse(IntList L) {
+        if (L == null) {
+            return null;
+        }
+        IntList T = L.rest;
+        L.rest = null;
+        while (T != null) {
+            IntList temp = T.rest;
+            T.rest = L;
+            L = T;
+            T = temp;
+        }
+        return  L;
+    }
+
+
+
+
 
 
 
